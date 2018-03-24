@@ -1,30 +1,25 @@
-    pipeline {
-        agent any
-        stages {
-            stage('Compile stage') {
-                steps {
-                    ('Maven_3.5.2'){
-                        sh "mvn clean compile"
-                }
-            }
-        }
-
-             stage('testing stage') {
-                 steps {
-                    ('Maven_3.5.2'){
-                        sh "mvn test"
-                }
-            }
-        }
-
-              stage('deployment stage') {
-                  steps {
-                    ('Maven_3.5.2'){
-                        sh "mvn deploy"
-                }
-            }
-        }
-
-      }
-
-    }
+pipeline {
+agent any&lt;/code&gt;
+ 
+tools{
+maven 'maven 3'
+jdk 'java 8'
+}
+ 
+stages {
+stage ("initialize") {
+steps {
+sh '''
+echo "PATH = ${PATH}"
+echo "M2_HOME = ${M2_HOME}"
+'''
+}
+}
+stage ('Build project') {
+steps {
+dir("project_templates/java_project_template"){
+sh 'mvn clean verify
+ 
+}
+}
+}
