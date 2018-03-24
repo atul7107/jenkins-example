@@ -2,6 +2,7 @@ pipeline {
     agent any
     tools {
         maven 'Maven_3.5.2'
+    }   
     stages {
         stage ('Compile Stage') {
 
@@ -30,4 +31,4 @@ pipeline {
             }
         }
     }
-}
+
